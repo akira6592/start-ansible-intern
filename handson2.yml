@@ -1,0 +1,30 @@
+---
+- hosts: ios            # 対象のグループ名（インベントリファイル内の定義）
+  gather_facts: false   # システム情報収集機能の無効化（時間短縮のため）
+
+  # ここから変数定義
+  vars:
+    # 実行したいshowコマンドを定義（あとでタスクで利用）
+    show_commands:
+      - show running-config
+      - show version
+      - show interfaces
+      - show ip route
+
+  # ここからタスクの定義
+  tasks:
+    # タスク1: showコマンドの実行
+    - name: exec show commands
+      cisco.ios.ios_command:
+        commands: "{{ show_commands }}"   # 実行したいshowコマンドを指定（変数として）
+      register: result_show_commands      # 実行結果をresult_show_commandsという変数に格納
+
+    # タスク2: 結果のファイル出力
+    - name: save to file show commands
+      ansible.builtin.copy:
+        content: "{{ item }}"     # 出力したい内容（itemにループごとに各showコマンド実行結果が入る）
+        dest: "outputs/{{ inventory_hostname }}_{{ show_commands[ansible_loop.index0] | replace(' ', '_') }}.txt"  # 出力先ファイル名
+      loop: "{{ result_show_commands.stdout }}"   # showコマンド実行結果内のループ
+      loop_control:
+        extended: true
+        label: "{{ show_commands[ansible_loop.index0] }}"

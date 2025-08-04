@@ -1,0 +1,13 @@
+---
+- hosts: ios            # 対象のグループ名（インベントリファイル内の定義）
+  gather_facts: false   # システム情報収集機能の無効化（時間短縮のため）
+
+  # ここからタスクの定義
+  tasks:
+    # タスク1: インターフェースへIPアドレスの設定
+    - name: config IP address
+      cisco.ios.ios_l3_interfaces:
+        config:
+          - name: GigabitEthernet3
+            ipv4:
+              - address: 10.1.3.254/24

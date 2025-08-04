@@ -1,0 +1,17 @@
+---
+- hosts: ios            # 対象のグループ名（インベントリファイル内の定義）
+  gather_facts: false   # システム情報収集機能の無効化（時間短縮のため）
+
+  # ここから変数定義
+  vars:
+    # 実行したいshowコマンドを定義（あとでタスクで利用）
+    ntp_servers:
+      - 10.0.0.11
+      - 10.0.0.12
+
+  # ここからタスクの定義
+  tasks:
+    # タスク1: 参照NTPサーバーの設定
+    - name: config ntp
+      cisco.ios.ios_config:
+        src: ntp.j2   # コンフィグ生成テンプレートを指定

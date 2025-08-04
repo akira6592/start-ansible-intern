@@ -1,0 +1,9 @@
+---
+# グループ ios 向けの各種変数
+ansible_network_os: ios             # 対象プラットフォーム
+ansible_connection: network_cli     # コネクションプラグインの指定
+ansible_user: ansible               # SSH接続ユーザー名
+ansible_password: CHANGEME          # SSH接続のパスワード（本来は要暗号化）
+ansible_become: true                # 特権に切り替えるかどうかの指定
+ansible_become_method: enable       # 特権に切り替える方式
+ansible_become_password: CHANGEME   # 特権(enable)パスワード（本来は要暗号化）
