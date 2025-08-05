@@ -52,10 +52,26 @@ Playbook を実行する前に、今回ルーターに設定する IP アドレ�
 
 【コマンド実行】
 ```bash
- ping 10.1.3.254 -c 4
+ping 10.1.3.254 -c 4
 ```
 
-結果は、以下のようにタイムアウトになって ping が失敗します。ルーター側にまだ IP アドレスが設定されていないためです。
+結果は、以下のように「Time to live exceeded」になって ping が失敗します。
+
+```
+(ansible) [ansible@controller handson]$  ping 10.1.3.254 -c 4
+PING 10.1.3.254 (10.1.3.254) 56(84) bytes of data.
+From 10.1.3.254 icmp_seq=1 Time to live exceeded
+From 10.1.3.254 icmp_seq=2 Time to live exceeded
+From 10.1.3.254 icmp_seq=3 Time to live exceeded
+From 10.1.3.254 icmp_seq=4 Time to live exceeded
+
+--- 10.1.3.254 ping statistics ---
+4 packets transmitted, 0 received, +4 errors, 100% packet loss, time 3005ms
+
+(ansible) [ansible@controller handson]$
+```
+
+また、以下のようにタイムアウトになることもあります。
 
 ```
 (ansible) [ansible@controller handson]$ ping 10.1.3.254 -c 4
@@ -66,6 +82,8 @@ PING 10.1.3.254 (10.1.3.254) 56(84) bytes of data.
 
 (ansible) [ansible@controller handson]$
 ```
+
+いずれの場合はも「4 packets transmitted」に対して「0 received」なので、一度も成功していないことを示しています。
 
 # 4-3. Playbookの実行
 
@@ -182,4 +200,5 @@ rtt min/avg/max/mdev = 0.502/1.469/2.271/0.633 ms
 ---
 
 🏠 [`README.md` に戻る](../README.md)
+
 
