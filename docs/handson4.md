@@ -13,7 +13,7 @@
 
 # 4-1. Playbookの作成
 
-Playbook（`handson4.yml`）は作成済みです。`cat` コマンドや `vi` などのエディタやで内容を確認してください。
+Playbook（`handson4.yml`）は作成済みです。`cat` コマンドや `vi` などのエディタで内容を確認してください。
 
 
 ```yaml
@@ -182,3 +182,4 @@ rtt min/avg/max/mdev = 0.502/1.469/2.271/0.633 ms
 ---
 
 🏠 [`README.md` に戻る](../README.md)
+
