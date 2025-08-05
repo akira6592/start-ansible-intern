@@ -2,7 +2,6 @@
 
 ## 公式ドキュメント
 - [Ansible Documentation](https://docs.ansible.com/)
-- [公式ブログ](https://www.ansible.com/blog)
 - [Ansible for Network Automation](https://docs.ansible.com/ansible/latest/network/index.html)
 - [Cisco IOS 向けモジュール一覧](https://docs.ansible.com/ansible/latest/collections/cisco/ios/index.html#modules)
 
@@ -13,7 +12,7 @@
   - Ansible を含めたネットワーク自動化に必要な情報が詰まった書籍
 - [Ansible 実践ガイド 第3版](https://book.impress.co.jp/books/1118101094)
   - Cisco IOS、Juniper Junos 向け Playbook が掲載された入門書
-- [Ansible 実践ガイド 第4版](https://book.impress.co.jp/books/1122101189)
+- [Ansible 実践ガイド 第4版 [基礎編]](https://book.impress.co.jp/books/1122101189)
   - 改めて入門者向けに絞った入門書
 - [Ansible クックブック](https://book.impress.co.jp/books/1120101163)
   - Cisco IOS、F5 BIG-IP など向けの Playbook あり
